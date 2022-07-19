@@ -11,7 +11,6 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const NavigationDrawerWidget(),
-      backgroundColor: white,
       appBar: AppBar(
         toolbarHeight: 60,
         centerTitle: true,
@@ -22,7 +21,7 @@ class MainPage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
               bottom: Radius.elliptical(
-                  MediaQuery.of(context).size.width * 1.5, 100.0)),
+                  MediaQuery.of(context).size.width * 1.5, 30.0)),
         ),
         backgroundColor: deepPurple,
       ),

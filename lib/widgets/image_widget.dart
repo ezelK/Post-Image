@@ -20,7 +20,7 @@ class ImageWidget extends StatelessWidget {
           decoration:  BoxDecoration(
               color: deepPurple,
               borderRadius:
-                  BorderRadius.vertical(top: Radius.elliptical(MediaQuery.of(context).size.width, 80))),
+                  BorderRadius.vertical(top: Radius.elliptical(MediaQuery.of(context).size.width, 30))),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -48,7 +48,7 @@ class ImageWidget extends StatelessWidget {
           decoration: BoxDecoration(
               color: deepPurple,
               borderRadius:
-                  BorderRadius.vertical(bottom: Radius.elliptical(MediaQuery.of(context).size.width, 80))),
+                  BorderRadius.vertical(bottom: Radius.elliptical(MediaQuery.of(context).size.width, 30))),
           child: Wrap(
             children: image.tags
                 .map((e) => Container(

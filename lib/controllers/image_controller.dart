@@ -8,7 +8,7 @@ import 'package:image_picker/image_picker.dart';
 
 class ImageController extends GetxController {
   final ImagePicker picker = ImagePicker();
-
+  final tags= [].obs;
   final int limit = 10;
   int page = 1;
   int lastCount = 0;
@@ -74,4 +74,10 @@ class ImageController extends GetxController {
     lastCount = result.length;
     data.addAll(result);
   }
+
+  void tagOnDelete(int index){
+    tags.removeAt(index);
+    tags.refresh();
+  }
+
 }
