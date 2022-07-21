@@ -19,7 +19,7 @@ class AddPhoto extends StatelessWidget {
         toolbarHeight: 60,
         centerTitle: true,
         title: const Text(
-          "Images",
+          "Post",
           style: regular,
         ),
         shape: RoundedRectangleBorder(
@@ -28,6 +28,14 @@ class AddPhoto extends StatelessWidget {
                   MediaQuery.of(context).size.width * 1.5, 30.0)),
         ),
         backgroundColor: deepPurple,
+        actions: [
+          IconButton(
+            onPressed: () {
+              controller.addPhoto();
+            },
+            icon: const Icon(Icons.check),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -38,7 +46,7 @@ class AddPhoto extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0),
+                      borderRadius: BorderRadius.circular(10.0),
                       borderSide: const BorderSide(color: deepPurple),
                     ),
                     hintText: 'Title'),
@@ -59,12 +67,12 @@ class AddPhoto extends StatelessWidget {
                 () => Container(
                   padding: const EdgeInsets.all(4.0),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30.0),
+                      borderRadius: BorderRadius.circular(10.0),
                       border: Border.all(color: deepPurple)),
                   child: TagEditor(
+                    controller: controller.tagController,
                     length: controller.tags.length,
                     hasAddButton: true,
-                    resetTextOnSubmitted: true,
                     tagBuilder: (context, index) => Chipp(
                       index: index,
                       label: controller.tags[index],
@@ -74,7 +82,6 @@ class AddPhoto extends StatelessWidget {
                       controller.tags.add(newValue);
                     },
                     inputDecoration: const InputDecoration(
-                      border: InputBorder.none,
                       hintText: ' Tags',
                     ),
                     textStyle: const TextStyle(color: Colors.grey),
@@ -96,7 +103,7 @@ class AddPhoto extends StatelessWidget {
                     ElevatedButton.icon(
                         style: regularButton,
                         onPressed: controller.takePhoto,
-                        icon: const Icon(Icons.camera),
+                        icon: const Icon(Icons.camera_enhance_outlined),
                         label: const Text(
                           "Take Photo",
                           style: regular,
