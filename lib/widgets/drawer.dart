@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:post_image/controllers/image_controller.dart';
 import 'package:post_image/screens/add_photo.dart';
 import 'package:post_image/styles/colors.dart';
+import 'package:post_image/styles/fonts.dart';
 
 class NavigationDrawerWidget extends GetView<ImageController> {
   const NavigationDrawerWidget({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class NavigationDrawerWidget extends GetView<ImageController> {
                 leading: const Icon(Icons.search_outlined, color: Colors.white),
                 title: TextField(
                     controller: controller.searchController,
-                    style: const TextStyle(color: Colors.white)),
+                    style: regular),
               ),
             ),
             Padding(
@@ -33,7 +34,7 @@ class NavigationDrawerWidget extends GetView<ImageController> {
                     side: BorderSide(color: Colors.black, width: 0.03)),
                 leading: const Icon(Icons.add_a_photo, color: Colors.white),
                 title: const Text("Add Photo",
-                    style: TextStyle(color: Colors.white)),
+                    style: regular),
                 onTap: () {
                   Get.to(const AddPhoto());
                 },

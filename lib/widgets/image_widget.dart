@@ -28,7 +28,7 @@ class ImageWidget extends StatelessWidget {
                 image.title,
                 style: regular,
               ),
-              const Divider(color: white,),
+              const Divider(color: lightPurple,),
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(image.diaryDate,style: regular),
