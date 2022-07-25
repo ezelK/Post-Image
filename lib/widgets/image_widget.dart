@@ -12,15 +12,16 @@ class ImageWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 20),
       width: MediaQuery.of(context).size.width,
-      child: Column(
-        children: [
+      child: Column(children: [
         Container(
-          padding: const EdgeInsets.only(left: 8,right:8,bottom:8, top: 32),
-          width:MediaQuery.of(context).size.width,
-          decoration:  BoxDecoration(
-              color: deepPurple,
-              borderRadius:
-                  BorderRadius.vertical(top: Radius.elliptical(MediaQuery.of(context).size.width, 30))),
+          padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8, top: 32),
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            color: deepPurple,
+            borderRadius: BorderRadius.vertical(
+              top: Radius.elliptical(MediaQuery.of(context).size.width, 30),
+            ),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -28,12 +29,15 @@ class ImageWidget extends StatelessWidget {
                 image.title,
                 style: regular,
               ),
-              const Divider(color: lightPurple,),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(image.diaryDate,style: regular),
-                Text(image.hour, style: regular)
-              ],
+              const Divider(
+                color: lightPurple,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(image.diaryDate, style: regular),
+                  Text(image.hour, style: regular)
+                ],
               )
             ],
           ),
@@ -43,12 +47,14 @@ class ImageWidget extends StatelessWidget {
             height: 500,
             child: CustomCachedNetworkImage(image: image.url)),
         Container(
-          padding: const EdgeInsets.only(left: 8,right:8,top:8, bottom: 32),
+          padding: const EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 32),
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-              color: deepPurple,
-              borderRadius:
-                  BorderRadius.vertical(bottom: Radius.elliptical(MediaQuery.of(context).size.width, 30))),
+            color: deepPurple,
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.elliptical(MediaQuery.of(context).size.width, 30),
+            ),
+          ),
           child: Wrap(
             children: image.tags
                 .map((e) => Container(

@@ -14,6 +14,7 @@ class ImageController extends GetxController {
   int lastCount = 0;
   int selectedIndex = 0;
   final date = DateTime.now().obs;
+  late DImage x;
 
   bool get hasMore => lastCount == limit;
   int get listLength => data.length + (hasMore ? 1 : 0);
@@ -48,12 +49,14 @@ class ImageController extends GetxController {
     debounce(selectedTags, (_) {
       reset();
     }, time: const Duration(milliseconds: 300));
+    
     searchController.addListener(() {
       searchText.value = searchController.text;
-      reset();
     });
 
-    // debounce(searchText, (_) {}, time: const Duration(milliseconds: 300));
+    debounce(searchText, (_) {
+      reset();
+    }, time: const Duration(milliseconds: 300));
     super.onInit();
   }
 

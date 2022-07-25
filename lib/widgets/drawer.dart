@@ -22,8 +22,7 @@ class NavigationDrawerWidget extends GetView<ImageController> {
                     side: BorderSide(color: Colors.black, width: 0.03)),
                 leading: const Icon(Icons.search_outlined, color: Colors.white),
                 title: TextField(
-                    controller: controller.searchController,
-                    style: regular),
+                    controller: controller.searchController, style: regular),
               ),
             ),
           ],
