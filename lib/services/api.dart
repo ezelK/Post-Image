@@ -1,5 +1,5 @@
+import 'dart:collection';
 import 'dart:math';
-
 import 'package:post_image/models/create_image.dart';
 import 'package:post_image/models/image_model.dart';
 
@@ -12,21 +12,10 @@ class Api {
         url:
             "https://cdn2.dokuzsoft.com/u/edessakitabevi/img/b/r/i/rick-and-morty-sayi-39-rick-and-morty-marmara-cizgi-0-904-45-b-1622496171.jpg",
         tags: [
-          "rick",
-          "morty",
+          "music",
+          "strange",
           "cartoon",
-          "strange",
-          "funny",
-          "crazy",
-          "strange",
-          "funny",
-          "crazy",
-          "strange",
-          "funny",
-          "crazy",
-          "strange",
-          "funny",
-          "crazy"
+          "color",
         ],
         date: DateTime.now()),
     DImage(
@@ -222,7 +211,7 @@ class Api {
         ],
         date: DateTime.now()),
   ];
-  late final DImage image; 
+
   static Future<List<DImage>?> getImages(
       String search, List<String> tags, int page) async {
     await Future.delayed(const Duration(milliseconds: 200));
@@ -245,5 +234,17 @@ class Api {
         date: DateTime.now());
     Api.data.insert(0, dImage);
     return dImage;
-  }  
+  }
+
+  static Future<List<String>> getTags() async {
+    await Future.delayed(const Duration(milliseconds: 100));
+    final allTags = data.map((e) => e.tags).toList();
+    final tags = HashSet<String>();
+
+    for (final t in allTags) {
+      tags.addAll(t);
+    }
+
+    return tags.toList();
+  }
 }

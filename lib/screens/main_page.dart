@@ -33,27 +33,6 @@ class MainPage extends StatelessWidget {
         ],
       ),
       body: const PostPage(),
-      /*bottomNavigationBar: BottomNavigationBar(
-        currentIndex: controller.selectedIndex,
-        onTap: controller.onItemTapped,
-        selectedItemColor: deepPurple,
-        unselectedItemColor: ligthPurple,
-        backgroundColor: white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_a_photo),
-            label: 'Add Photo',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-        ],
-      ),*/
     );
   }
 }

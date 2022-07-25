@@ -15,6 +15,7 @@ class ImageController extends GetxController {
   int selectedIndex = 0;
   final date = DateTime.now().obs;
   late DImage x;
+  List<String> searchTags = [];
 
   bool get hasMore => lastCount == limit;
   int get listLength => data.length + (hasMore ? 1 : 0);
@@ -44,12 +45,14 @@ class ImageController extends GetxController {
   }
 
   @override
-  void onInit() {
+  void onInit() async {
     reset();
+    searchTags = await Api.getTags();
+
     debounce(selectedTags, (_) {
       reset();
     }, time: const Duration(milliseconds: 300));
-    
+
     searchController.addListener(() {
       searchText.value = searchController.text;
     });
@@ -105,6 +108,7 @@ class ImageController extends GetxController {
       Get.back();
       titleController.clear();
       tags.clear();
+      searchTags = await Api.getTags();
     }
   }
 }

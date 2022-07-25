@@ -8,6 +8,7 @@ class NavigationDrawerWidget extends GetView<ImageController> {
   const NavigationDrawerWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ImageController());
     return Drawer(
       child: Material(
         color: deepPurple,
@@ -23,6 +24,37 @@ class NavigationDrawerWidget extends GetView<ImageController> {
                 leading: const Icon(Icons.search_outlined, color: Colors.white),
                 title: TextField(
                     controller: controller.searchController, style: regular),
+              ),
+            ),
+            Obx(
+              () => Wrap(
+                children: controller.searchTags
+                    .map((e) => Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              controller.selectedTags.contains(e)
+                                  ? controller.selectedTags.remove(e)
+                                  : controller.selectedTags.add(e);
+                            },
+                            child: Chip(
+                              backgroundColor:
+                                  controller.selectedTags.contains(e)
+                                      ? white
+                                      : lightPurple,
+                              labelPadding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              label: Text(
+                                e,
+                                style: const TextStyle(
+                                  fontFamily: 'Arima',
+                                  color: deepPurple,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ))
+                    .toList(),
               ),
             ),
           ],
