@@ -77,7 +77,7 @@ class ImageController extends GetxController {
   }
 
   Future<void> fetch() async {
-    final result = await Api.getImages(searchText.value, selectedTags, page);
+    final result = await Api.getPosts(searchText.value, selectedTags, page);
     if (result == null) return;
     page += 1;
     lastCount = result.length;
@@ -91,12 +91,10 @@ class ImageController extends GetxController {
 
   void addPhoto() async {
     final createImage = CreateImage(
-        title: titleController.text,
-        tags: tags
-            .map((element) => element)
-            .toList(), //created tags' copy to write after delete tags
-        url:
-            "https://i.pinimg.com/736x/f0/71/34/f07134b6c562bc53d65b69dec2ac5ca4.jpg");
+      title: titleController.text,
+      tags: tags.map((element) => element).toList(),
+      imageBytes: image.value!.readAsBytesSync(),
+    ); //created tags' copy to write after delete tags
     if (titleController.text != "" && tags.isNotEmpty) {
       final post = await Api.addImage(createImage);
       if (post == null) {

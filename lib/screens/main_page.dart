@@ -1,5 +1,7 @@
+import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:post_image/controllers/image_controller.dart';
 import 'package:post_image/screens/add_photo.dart';
 import 'package:post_image/styles/colors.dart';
 import 'package:post_image/styles/fonts.dart';
@@ -11,25 +13,37 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ImageController());
     return Scaffold(
       drawer: const NavigationDrawerWidget(),
       appBar: AppBar(
-        toolbarHeight: 60,
-        centerTitle: true,
+        leading: Builder(builder: (BuildContext context) {
+          return IconButton(
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            icon: const Icon(Icons.tag_outlined),
+          );
+        }),
+        iconTheme: const IconThemeData(color: deepPurple),
         title: const Text(
           "Images",
           style: regular,
         ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-              bottom: Radius.elliptical(
-                  MediaQuery.of(context).size.width * 1.5, 30.0)),
-        ),
-        backgroundColor: deepPurple,
+        backgroundColor: white,
         actions: [
-          IconButton(onPressed: (){
-            Get.to(const AddPhoto());
-          }, icon: const Icon(Icons.add_a_photo_outlined))
+          AnimSearchBar(
+            width: 200,
+            textController: controller.searchController,
+            onSuffixTap: () {
+              controller.searchController.clear();
+            },
+          ),
+          IconButton(
+              onPressed: () {
+                Get.to(const AddPhoto());
+              },
+              icon: const Icon(Icons.add_a_photo_outlined)),
         ],
       ),
       body: const PostPage(),

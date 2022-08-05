@@ -16,24 +16,26 @@ class AddPhoto extends StatelessWidget {
     final controller = Get.put(ImageController());
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 60,
         centerTitle: true,
         title: const Text(
           "Post",
           style: regular,
         ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-              bottom: Radius.elliptical(
-                  MediaQuery.of(context).size.width * 1.5, 30.0)),
-        ),
-        backgroundColor: deepPurple,
+        backgroundColor: white,
+        leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: const Icon(Icons.clear,color: deepPurple,)),
         actions: [
           IconButton(
             onPressed: () {
               controller.addPhoto();
             },
-            icon: const Icon(Icons.check),
+            icon: const Icon(
+              Icons.check,
+              color: deepPurple,
+            ),
           ),
         ],
       ),

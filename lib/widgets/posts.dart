@@ -9,24 +9,24 @@ class PostPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ImageController());
     return Obx(
-        () => controller.isLoading.value
-            ? const Center(child: CircularProgressIndicator())
-            : RefreshIndicator(
-                onRefresh: () async {
-                  await controller.reset();
+      () => controller.isLoading.value
+          ? const Center(child: CircularProgressIndicator())
+          : RefreshIndicator(
+              onRefresh: () async {
+                await controller.reset();
+              },
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemCount: controller.listLength,
+                itemBuilder: (ctx, idx) {
+                  if (idx < controller.data.length) {
+                    return ImageWidget(image: controller.data[idx]);
+                  }
+                  controller.fetch();
+                  return const Center(child: CircularProgressIndicator());
                 },
-                child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: controller.listLength,
-                  itemBuilder: (ctx, idx) {
-                    if (idx < controller.data.length) {
-                      return ImageWidget(image: controller.data[idx]);
-                    }
-                    controller.fetch();
-                    return const Center(child: CircularProgressIndicator());
-                  },
-                ),
               ),
-      );
+            ),
+    );
   }
 }

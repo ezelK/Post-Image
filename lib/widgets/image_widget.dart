@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:post_image/models/image_model.dart';
 import 'package:post_image/styles/colors.dart';
 import 'package:post_image/styles/fonts.dart';
@@ -11,16 +12,14 @@ class ImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 20),
-      width: MediaQuery.of(context).size.width,
+      width: Get.width,
       child: Column(children: [
         Container(
           padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8, top: 32),
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: deepPurple,
-            borderRadius: BorderRadius.vertical(
-              top: Radius.elliptical(MediaQuery.of(context).size.width, 30),
-            ),
+          width: Get.width,
+          decoration: const BoxDecoration(
+            color: white,
+            boxShadow: [BoxShadow(color: lightPurple, blurRadius: 10)],
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,17 +42,15 @@ class ImageWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-            width: MediaQuery.of(context).size.width,
+            width: Get.width,
             height: 500,
             child: CustomCachedNetworkImage(image: image.url)),
         Container(
           padding: const EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 32),
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: deepPurple,
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.elliptical(MediaQuery.of(context).size.width, 30),
-            ),
+          width: Get.width,
+          decoration: const BoxDecoration(
+            color: white,
+            boxShadow: [BoxShadow(color: lightPurple, blurRadius: 10)],
           ),
           child: Wrap(
             children: image.tags
