@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:post_image/controllers/image_controller.dart';
-import 'package:post_image/models/image_model.dart';
 import 'package:post_image/styles/colors.dart';
 
 class TagsWidget extends GetView<ImageController> {
