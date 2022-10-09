@@ -215,7 +215,7 @@ class Api {
 
   static Future dioAuth() async {
     BaseOptions baseOptions = BaseOptions(
-        baseUrl: "http://78.189.154.147", responseType: ResponseType.json);
+        baseUrl: "http://192.198.154.147", responseType: ResponseType.json);
     return Dio(baseOptions);
   }
 

@@ -7,6 +7,7 @@ import 'package:post_image/styles/colors.dart';
 import 'package:post_image/styles/fonts.dart';
 import 'package:post_image/widgets/drawer.dart';
 import 'package:post_image/widgets/posts.dart';
+import 'package:post_image/widgets/tags_bar_widget.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);

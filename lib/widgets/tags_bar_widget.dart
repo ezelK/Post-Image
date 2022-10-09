@@ -4,20 +4,17 @@ import 'package:post_image/controllers/image_controller.dart';
 import 'package:post_image/styles/colors.dart';
 
 class TagsWidget extends GetView<ImageController> {
-  const TagsWidget({Key? key, required this.visible}) : super(key: key);
-  final bool visible;
+  const TagsWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Visibility(
-      visible: false, 
-      child: Center(
+    return Center(
+      child: Container(
         child: Padding(
             padding: const EdgeInsets.only(top: 32.0),
             child: ListView(
               physics: const BouncingScrollPhysics(
                   parent: AlwaysScrollableScrollPhysics()),
               children: [
-                const Text("Search Tags" ,style: TextStyle(color: deepPurple, fontFamily: 'Arima', fontSize: 25),),
                 Obx(
                   () => Wrap(
                     children: controller.searchTags
@@ -57,8 +54,8 @@ class TagsWidget extends GetView<ImageController> {
               ],
             ),
           ),
+      ),
     
-        ),
-    );
+      );
   }
 }

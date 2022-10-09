@@ -12,7 +12,6 @@ class ImageController extends GetxController {
   final int limit = 10;
   int page = 1;
   int lastCount = 0;
-  int selectedIndex = 0;
   final date = DateTime.now().obs;
   late DImage x;
   List<String> searchTags = [];
